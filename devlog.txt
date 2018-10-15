@@ -1,0 +1,15 @@
+azrael -- Sarar Aseer, Jason Tung, Johnny Wong and Zane Wang
+SoftDev1 pd8
+P00 -- Da Art of Storytellin'
+DevLog
+
+Completed:
+
+To Do:
+design.pdf
+
+<====================================NEW ENTRY================================>
+wangZ -- 2018-10-15 17:14
+
+Added the .gitignore and created the devlog! Will start updating the devlog
+with new information soon as we complete design.pdf.
