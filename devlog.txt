@@ -13,3 +13,9 @@ wangZ -- 2018-10-15 17:14
 
 Added the .gitignore and created the devlog! Will start updating the devlog
 with new information soon as we complete design.pdf.
+
+<==================================== CLOSE ==================================>
+wongJ -- 2018-10-16 00:21
+
+Pushed the design.pdf that contains our component map, site map, and database
+schema. Our design is ready to be reviewed and improved upon later.
