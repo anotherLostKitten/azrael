@@ -7,6 +7,24 @@ Completed:
 
 To Do:
 design.pdf
+revise design
+
+
+
+<====================================NEW ENTRY================================>
+tungJ -- 2018-10-16 14:04
+Plan to revise designed doc in response to feedback given from reviewing teams.
+Flipped devlog to recent at top.
+
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+wongJ -- 2018-10-16 00:21
+
+Pushed the design.pdf that contains our component map, site map, and database
+schema. Our design is ready to be reviewed and improved upon later.
+
+<==================================== CLOSE ==================================>
 
 <====================================NEW ENTRY================================>
 wangZ -- 2018-10-15 17:14
@@ -16,12 +34,3 @@ with new information soon as we complete design.pdf.
 
 <==================================== CLOSE ==================================>
 
-
-
-<====================================NEW ENTRY================================>
-wongJ -- 2018-10-16 00:21
-
-Pushed the design.pdf that contains our component map, site map, and database
-schema. Our design is ready to be reviewed and improved upon later.
-
-<==================================== CLOSE ==================================>
