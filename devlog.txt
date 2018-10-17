@@ -10,12 +10,18 @@ To Do:
 revise design
 
 <====================================NEW ENTRY================================>
+tungJ -- 2018-10-17 14:01
+added stub file
+
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
 wangZ -- 2018-10-17 00:14
 Task the Second
 The article was striking and revealing into how even professional code may not
 be efficient, and can fail. It really made us think about how we might benefit
 the fellow programmers around us by:
-1. Adding more comments into our code 
+1. Adding more comments into our code
 2. Having better communication with our team
 3. We all contribute a fair amount and step in to help one another especially
 when one is overburdened with other work too
