@@ -11,6 +11,7 @@ revise design
 
 <====================================NEW ENTRY================================>
 wangZ -- 2018-10-17 00:14
+Task the Second
 The article was striking and revealing into how even professional code may not
 be efficient, and can fail. It really made us think about how we might benefit
 the fellow programmers around us by:
