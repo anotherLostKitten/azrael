@@ -27,12 +27,27 @@ def insertRow(tableName, data):
     command = "INSERT INTO {0} VALUES(?, ?, ?)"
     c.execute(command.format(tableName), info)
 
+def createStory(storyTitle):
+    tableCreator(storyTitle, 'story_id integer', 'story_line text', 'user_id integer')
+
+def addToStory(storyTitle, text, user_id):
+    command = "SELECT id FROM {0} WHERE id == (SELECT max(id) FROM {0})".format(storyTitle)
+    c.execute(command)
+    max_id = int(c.fetchall())
+    addCommand = "INSERT INTO {0} VALUES (?, ?, ?)".format(storyTitle)
+    row = (max_id + 1, text, user_id)
+    c.execute(addCommand, row)
+
+
+
+
 #===========================================================
+
 
 #============================MAIN===========================
 
 # CREATE USERS TABLE
-tableCreator('users text', 'user_name text', 'passwords', 'user_id integer')
+tableCreator('users text', 'user_name text', 'passwords text', 'user_id integer')
 
 
 
