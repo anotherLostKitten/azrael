@@ -31,14 +31,30 @@ def createStory(storyTitle):
     tableCreator(storyTitle, 'story_id integer', 'story_line text', 'user_id integer')
 
 def addToStory(storyTitle, text, user_id):
-    command = "SELECT id FROM {0} WHERE id == (SELECT max(id) FROM {0})".format(storyTitle)
+    command = "SELECT story_id FROM {0} WHERE story_id == (SELECT max(story_id) FROM {0})".format(storyTitle)
     c.execute(command)
-    max_id = int(c.fetchall())
+    selectedVal = c.fetchone()
+    max_id = 0
+    if selectedVal == None:
+        max_id = 0
+    else:
+        max_id = int(selectedVal)
     addCommand = "INSERT INTO {0} VALUES (?, ?, ?)".format(storyTitle)
     row = (max_id + 1, text, user_id)
     c.execute(addCommand, row)
 
-
+def registerUser(userName, password):
+    command = "SELECT user_id FROM users WHERE user_id == (SELECT max(user_id) FROM users)"
+    c.execute(command)
+    selectedVal = c.fetchone()
+    max_id = 0
+    if selectedVal != None:
+        max_id = int(selectedVal)
+    else:
+        max_id = 1
+    addCommand = "INSERT INTO users VALUES (?, ?, ?)"
+    row = (userName, password, max_id + 1)
+    c.execute(addCommand, row)
 
 
 #===========================================================
@@ -47,7 +63,13 @@ def addToStory(storyTitle, text, user_id):
 #============================MAIN===========================
 
 # CREATE USERS TABLE
-tableCreator('users text', 'user_name text', 'passwords text', 'user_id integer')
+tableCreator('users', 'user_name text', 'passwords text', 'user_id integer')
+
+# CREATE sararIsLateToClass Story
+createStory("sararIsLateToClass")
+
+registerUser("sarar123", "iAmBadAtLeague!")
+addToStory("sararIsLateToClass", "sarar came to class late and got flamed", 2)
 
 
 

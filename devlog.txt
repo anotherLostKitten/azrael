@@ -8,6 +8,23 @@ design.pdf
 
 To Do:
 revise design
+login/out functions
+database management script
+html templates
+
+
+<====================================NEW ENTRY================================>
+wongJ -- 2018-10-17 15:33
+Added story table methods to db_stuff.py
+Note: Need to change name of db_stuff.py; current filename is a placeholder
+
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+tungJ -- 2018-10-18 13:57
+made a dummy db for logins
+
+<==================================== CLOSE ==================================>
 
 <====================================NEW ENTRY================================>
 tungJ -- 2018-10-17 14:01
