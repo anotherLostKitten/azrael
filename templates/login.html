@@ -1,0 +1,28 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+    <!-- {% set msgs = get_flashed_messages() %}
+         {% for each in msgs %}
+         {{each}}
+         <br>
+         {% endfor %} -->
+
+    {% block content %}
+    <form action="/auth" method="post">
+      <p>You are not logged in. </p>
+
+      Username: <input type="text" name="username">   <font color="red"> {{incUser}} </font>
+      <br>
+      Password: <input type="password" name="password">   <font color="red"> {{incPass}} </font>
+      <br>
+      <input type="submit" name="Subl">
+    </form>
+
+    {% endblock %}
+
+
+  </body>
+
+</html>
