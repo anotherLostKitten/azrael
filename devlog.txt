@@ -12,7 +12,7 @@ Use keyboard shortcut to jump to end,
  modify appropriately.
 Each entry should begin with the following format:
  firstL -- TIMESTAMP\n
-e.g.: 
+e.g.:
 clydeS -- 2999-12-31 23:59
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -27,20 +27,20 @@ Story Builder
 
 Completed:
 design.pdf
+db.py
 
 To Do:
 revise design
 login/out functions
-database management script
 html templates
 
- ______   ______   __   __   __       ______   _______     
-/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
-\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  
- \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\ 
-  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/ 
-   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
-    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/ 
+ ______   ______   __   __   __       ______   _______
+/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
+\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__
+ \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\
+  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/
+   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \
+    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
 ==============================================================
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
@@ -110,4 +110,20 @@ wangZ -- 2018-10-19 00:23
 flipped devlog back to old at top, new at bottom
 edited and renamed html files
 
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+wongJ -- 2018-10-19 19:51
+Renamed db_stuff.py to db.py
+Methods that are functional:
+createStory(storyTitle)
+addToStory(storyTitle, text, user_id)
+findMostRecentUpdate(storyTitle)
+findStory(storyTitle)
+getStories()
+registerUser(userName, password)
+findUser(userName)
+verifyUser(userName, password)
+
+db.py ready for use by tungJ and other Flask devos
 <==================================== CLOSE ==================================>
