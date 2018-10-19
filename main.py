@@ -2,18 +2,27 @@
 # SoftDev1 pd8
 # P00 -- <<<FILL THIS OUT>>>
 # <<YEAR-MON-DAY>>
+import os
 import sqlite3
 
-from flask import Flask, redirect, url_for, render_template
+from flask import Flask, redirect, url_for, render_template, request, flash, get_flashed_messages
 
-DB_FILE = "dog.db"
+DB_FILE = "data/dog.db"
 
 db = sqlite3.connect(DB_FILE)  # open if file exists, otherwise create
 c = db.cursor()  # facilitate db ops
 
 app = Flask(__name__)
 
+app.secret_key = os.urandom(32)
 
+test = c.execute("SELECT * FROM Users;")
+
+accts = {}
+for x in test:
+    accts[str(x[0])] = {"pass": str(x[1]), "user": int(x[2])}
+
+print (accts)
 
 @app.route('/')
 def hello_world():
@@ -27,15 +36,51 @@ def login_world():
 def register_world():
     return render_template("register.html")
 
+@app.route('/auth', methods=['POST'])
+def auth():
+    #LOGGING IN MEN
+    if request.form["submit"] == "login":
+        if request.form["username"] in accts:
+            if str(request.form['password']) == accts[request.form["username"]]["pass"]:
+                return "u r men"
+            print(str(request.form['password']), accts[request.form["username"]])
+            flash('bad! not ur password bro')
+        else:
+            flash('bad! username not here!')
+        #print("hello", get_flashed_messages())
+        return(render_template("login.html"))
+    #REGISTERING MEN
+    else:
+        if len(request.form["username"]) == 0 or request.form["username"] not in accts:
+            if len(request.form['password']) == 0:
+                #add acct
+                return "u r men"
+
+            flash('bad! pass too short')
+        else:
+            flash('bad! username taken or maybe it\'s too short!')
+        # print("hello", get_flashed_messages())
+        return (render_template("register.html"))
+
+    # if request.form['username'] in acc:
+    #     if request.form['password'] == 'Tung':
+    #         session['Ahmed'] = 'Tung'
+    #         flash('Success! Logged in as Ahmed', 'success')
+    #         return render_template('yes.html',usr = 'Ahmed')
+    #     else:
+    #         flash('Incorrect Password!', 'error')
+    #         return render_template('login.html')
+    # flash('Incorrect Username!', 'error')
+    # return render_template('login.html')
+
 @app.route('/home')
 def homer():
     #something about getting cookies from register or login
     return render_template("root.html")
 
 
-if __name__ == "__main__":
-    app.debug = True
-    app.run()
+app.debug = True
+app.run()
 
 
 db.commit()  # save changes
