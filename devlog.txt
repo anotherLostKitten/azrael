@@ -1,7 +1,29 @@
-azrael -- Sarar Aseer, Jason Tung, Johnny Wong and Zane Wang
-SoftDev1 pd8
-P00 -- Da Art of Storytellin'
-DevLog
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+USAGE:
+* Replace all fields, angle brackets included, with specified info.
+  eg, pd <pd#> --> pd 3
+* Delete these instructions once all teammates understand usage.
+  (from tilde bar above to tilde bar below)
+* rename this file devlog.txt
+
+devlog--
+Use keyboard shortcut to jump to end,
+ replicate entry template, (Ctrl-Shift up x5, Ctrl-X, Ctrl-V x2)
+ modify appropriately.
+Each entry should begin with the following format:
+ firstL -- TIMESTAMP\n
+e.g.: 
+clydeS -- 2999-12-31 23:59
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+azrael
+Sarar Aseer
+Jason Tung
+Zane Wang
+Johnny Wong
+pd 8
+---------------------
+Story Builder
 
 Completed:
 design.pdf
@@ -12,23 +34,42 @@ login/out functions
 database management script
 html templates
 
+ ______   ______   __   __   __       ______   _______     
+/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
+\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  
+ \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\ 
+  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/ 
+   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
+    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/ 
+==============================================================
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 <====================================NEW ENTRY================================>
-wongJ -- 2018-10-17 15:33
-Added story table methods to db_stuff.py
-Note: Need to change name of db_stuff.py; current filename is a placeholder
+wangZ -- 2018-10-15 17:14
+
+Added the .gitignore and created the devlog! Will start updating the devlog
+with new information soon as we complete design.pdf.
 
 <==================================== CLOSE ==================================>
 
 <====================================NEW ENTRY================================>
-tungJ -- 2018-10-18 13:57
-made a dummy db for logins
+wongJ -- 2018-10-16 00:21
+
+Pushed the design.pdf that contains our component map, site map, and database
+schema. Our design is ready to be reviewed and improved upon later.
 
 <==================================== CLOSE ==================================>
 
 <====================================NEW ENTRY================================>
-tungJ -- 2018-10-17 14:01
-added stub file
+tungJ -- 2018-10-16 14:04
+Plan to revise designed doc in response to feedback given from reviewing teams.
+Flipped devlog to recent at top.
+
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+wangZ -- 2018-10-17 00:11
+Revised design.pdf and updated devlog to contain the new design.pdf.
 
 <==================================== CLOSE ==================================>
 
@@ -46,31 +87,27 @@ when one is overburdened with other work too
 <==================================== CLOSE ==================================>
 
 <====================================NEW ENTRY================================>
-wangZ -- 2018-10-17 00:11
-Revised design.pdf and updated devlog to contain the new design.pdf.
+tungJ -- 2018-10-17 14:01
+added stub file
 
 <==================================== CLOSE ==================================>
 
 <====================================NEW ENTRY================================>
-tungJ -- 2018-10-16 14:04
-Plan to revise designed doc in response to feedback given from reviewing teams.
-Flipped devlog to recent at top.
+wongJ -- 2018-10-17 15:33
+Added story table methods to db_stuff.py
+Note: Need to change name of db_stuff.py; current filename is a placeholder
 
 <==================================== CLOSE ==================================>
 
 <====================================NEW ENTRY================================>
-wongJ -- 2018-10-16 00:21
-
-Pushed the design.pdf that contains our component map, site map, and database
-schema. Our design is ready to be reviewed and improved upon later.
+tungJ -- 2018-10-18 13:57
+made a dummy db for logins
 
 <==================================== CLOSE ==================================>
 
 <====================================NEW ENTRY================================>
-wangZ -- 2018-10-15 17:14
-
-Added the .gitignore and created the devlog! Will start updating the devlog
-with new information soon as we complete design.pdf.
+wangZ -- 2018-10-19 00:23
+flipped devlog back to old at top, new at bottom
+edited and renamed html files
 
 <==================================== CLOSE ==================================>
-
