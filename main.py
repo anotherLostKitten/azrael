@@ -13,11 +13,11 @@ c = db.cursor()  # facilitate db ops
 
 app = Flask(__name__)
 
-acct_stack = {}
+
 
 @app.route('/')
 def hello_world():
-    return render_template("loginregister.html")
+    return render_template("root.html")
 
 @app.route('/login')
 def login_world():
@@ -28,9 +28,9 @@ def register_world():
     return render_template("register.html")
 
 @app.route('/home')
-def register_world():
+def homer():
     #something about getting cookies from register or login
-    return render_template("home.html", usr= acct_stack[0])
+    return render_template("root.html")
 
 
 if __name__ == "__main__":
