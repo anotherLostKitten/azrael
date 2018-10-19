@@ -4,11 +4,11 @@
 
   </head>
   <body>
-    <!-- {% set msgs = get_flashed_messages() %}
-         {% for each in msgs %}
-         {{each}}
-         <br>
-         {% endfor %} -->
+    {% set msgs = get_flashed_messages() %}
+    {% for each in msgs %}
+    {{each}}
+    <br>
+    {% endfor %} 
 
     {% block content %}
     <form action="/auth" method="post">
