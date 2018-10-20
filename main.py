@@ -1,7 +1,7 @@
-# azrael - Jason Tung and <<<NAME>>>
+# azrael - Sarar Aseer, Jason Tung, Johnny Wong and Zane Wang
 # SoftDev1 pd8
-# P00 -- <<<FILL THIS OUT>>>
-# <<YEAR-MON-DAY>>
+# P00 -- Da Art of Storytellin'
+
 import os
 import sqlite3
 
