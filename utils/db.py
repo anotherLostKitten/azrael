@@ -39,6 +39,10 @@ def createStory(storyTitle):
 
 def addToStory(storyTitle, text, user_id):
     # Add text to storyTitle's table in database
+    # if user contributed to storyTitle already, don't add to story
+    if user_id in get_user_ids(storyTitle):
+        return False
+    # otherwise add text to story
     command = "SELECT story_id FROM {0} WHERE story_id == (SELECT max(story_id) FROM {0})".format(storyTitle)
     c.execute(command)
     selectedVal = c.fetchone()
@@ -49,6 +53,7 @@ def addToStory(storyTitle, text, user_id):
         max_id = selectedVal[0]
     row = (max_id + 1, text, user_id)
     insertRow(storyTitle, row)
+    return True
 
 def findMostRecentUpdate(storyTitle):
     # Returns text of most recent update to storyTitle
@@ -72,6 +77,13 @@ def getStories():
     # list comprehensions -- fetch all storyTitles and store in a set
     storyNames = set([x[1] for x in selectedVal if x[3] > 2])
     return storyNames
+
+def get_user_ids(storyTitle):
+    # Returns set of user_ids contributed to storyTitle
+    command = "SELECT user_id FROM {0}".format("'" + storyTitle + "'")
+    c.execute(command)
+    ids = set(x[0] for x in c.fetchall())
+    return ids
 
 def registerUser(userName, password):
     # Adds user to database
@@ -109,6 +121,13 @@ def verifyUser(userName, password):
     if userName == selectedVal[0] and password == selectedVal[1]:
         return True
     return False
+
+def getID_fromUser(userName):
+    # Returns user_id of userName
+    command = "SELECT user_id FROM users WHERE user_name == {0}".format("'" + userName + "'")
+    c.execute(command)
+    id = c.fetchone()[0]
+    return id
 #======================== DB FXNS =========================
 
 
@@ -117,14 +136,15 @@ def verifyUser(userName, password):
 # CREATE USERS TABLE
 #tableCreator('users', 'user_name text', 'passwords text', 'user_id integer')
 
-# CREATE sararIsLateToClass Story
-#createStory("meStoremoreXDDD")
 
-#print(registerUser("XDDdnou", "p"))
-#addToStory("meStore", "yaymebetter!!!", 69)
+#createStory("story")
+
+#registerUser("p", "p")
+#addToStory("story", "yaymebetter!!!!", 1323234)
 #print(verifyUser("p", "p"))
 #print(findUser("p"))
 #findStory()
+#print(getID_fromUser('p'))
 
 #======================== SAVE CHANGES =========================
 db.commit() #save changes

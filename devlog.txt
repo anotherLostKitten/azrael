@@ -114,7 +114,7 @@ edited and renamed html files
 
 <====================================NEW ENTRY================================>
 wongJ -- 2018-10-19 19:51
-Renamed db_stuff.py to db.py
+Renamed db_stuff.py to utils/db.py
 Methods that are functional:
 createStory(storyTitle)
 addToStory(storyTitle, text, user_id)
@@ -126,4 +126,13 @@ findUser(userName)
 verifyUser(userName, password)
 
 db.py ready for use by tungJ and other Flask devos
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+wongJ -- 2018-10-19 20:45
+Added the following methods to utils/db.py:
+get_user_ids(storyTitle)
+getID_fromUser(userName)
+
+These methods should assist tungJ in his Flask duties.
 <==================================== CLOSE ==================================>
