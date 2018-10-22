@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <h1>Hello My Dude</h1>{# header #}
+        {% block head %}
+         <title>    {% block title %} {% endblock %}</title> 
+        {% endblock %}
+        </title>
+    </head>
+<body>
+  <a href = "/root"><button type="button" name ="LI">HomePage</button>  </a>
+
+        <font color="red"> {% set msgs = get_flashed_messages() %}{# program is now  aware there are flash messages #}
+            {% for each in msgs %}{# Loops through messages #}
+                {{each}}
+                <br>
+            {% endfor %}
+        </font>
+
+        {% block content %}
+        {% endblock %}
+
+    </body>
+</html>
