@@ -6,7 +6,7 @@ import sqlite3   # enable control of an sqlite database
 
 # set up to read/write to db files
 
-DB_FILE='azrael_stories.db'
+DB_FILE='data/azrael_stories.db'
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor()               #facilitate db ops
 
@@ -25,12 +25,24 @@ def insertRow(tableName, data):
     @data is a tuple containing data to be entered
     '''
     command = "INSERT INTO {0} VALUES(?, ?, ?)"
-    c.execute(command.format(tableName), info)
+    c.execute(command.format(tableName), data)
+
+#========================HELPER FXNS=======================
+
+#======================== DB FXNS =========================
 
 def createStory(storyTitle):
-    tableCreator(storyTitle, 'story_id integer', 'story_line text', 'user_id integer')
+    if findStory(storyTitle):
+        tableCreator(storyTitle, 'story_id integer', 'story_line text', 'user_id integer')
+        return True
+    return False
 
 def addToStory(storyTitle, text, user_id):
+    # Add text to storyTitle's table in database
+    # if user contributed to storyTitle already, don't add to story
+    if user_id in get_user_ids(storyTitle):
+        return False
+    # otherwise add text to story
     command = "SELECT story_id FROM {0} WHERE story_id == (SELECT max(story_id) FROM {0})".format(storyTitle)
     c.execute(command)
     selectedVal = c.fetchone()
@@ -38,42 +50,102 @@ def addToStory(storyTitle, text, user_id):
     if selectedVal == None:
         max_id = 0
     else:
-        max_id = int(selectedVal)
-    addCommand = "INSERT INTO {0} VALUES (?, ?, ?)".format(storyTitle)
+        max_id = selectedVal[0]
     row = (max_id + 1, text, user_id)
-    c.execute(addCommand, row)
+    insertRow(storyTitle, row)
+    return True
+
+def findMostRecentUpdate(storyTitle):
+    # Returns text of most recent update to storyTitle
+    command = "SELECT story_line FROM {0} WHERE story_id == (SELECT max(story_id) FROM {0})".format("'" + storyTitle + "'")
+    c.execute(command)
+    selectedVal = c.fetchone()[0]
+    return selectedVal
+
+def findStory(storyTitle):
+    # Checks if storyTitle is unique
+    storyNames = getStories()
+    if storyTitle in storyNames:
+        return False
+    return True
+
+def getStories():
+    # Returns a set containing all current storyTitles
+    command = "SELECT * FROM sqlite_master WHERE type = 'table'"
+    c.execute(command)
+    selectedVal = c.fetchall()
+    # list comprehensions -- fetch all storyTitles and store in a set
+    storyNames = set([x[1] for x in selectedVal if x[3] > 2])
+    return storyNames
+
+def get_user_ids(storyTitle):
+    # Returns set of user_ids contributed to storyTitle
+    command = "SELECT user_id FROM {0}".format("'" + storyTitle + "'")
+    c.execute(command)
+    ids = set(x[0] for x in c.fetchall())
+    return ids
 
 def registerUser(userName, password):
+    # Adds user to database
     command = "SELECT user_id FROM users WHERE user_id == (SELECT max(user_id) FROM users)"
     c.execute(command)
     selectedVal = c.fetchone()
     max_id = 0
     if selectedVal != None:
-        max_id = int(selectedVal)
+        max_id = selectedVal[0]
     else:
-        max_id = 1
-    addCommand = "INSERT INTO users VALUES (?, ?, ?)"
-    row = (userName, password, max_id + 1)
-    c.execute(addCommand, row)
+        max_id = 0
+    # userName is already in database -- do not continue to add
+    if findUser(userName):
+        return False
+    # userName not in database -- continue to add
+    else:
+        row = (userName, password, max_id + 1)
+        insertRow('users', row)
+        return True
+
+def findUser(userName):
+    # Checks if userName is unique
+    command = "SELECT user_name FROM users WHERE user_name == {0}".format("'" + userName + "'")
+    c.execute(command)
+    selectedVal = c.fetchone()
+    if selectedVal == None:
+        return False
+    return True
+
+def verifyUser(userName, password):
+    # Checks if userName and password match those found in database
+    command = "SELECT user_name, passwords FROM users WHERE user_name == {0}".format("'" + userName + "'")
+    c.execute(command)
+    selectedVal = c.fetchone()
+    if userName == selectedVal[0] and password == selectedVal[1]:
+        return True
+    return False
+
+def getID_fromUser(userName):
+    # Returns user_id of userName
+    command = "SELECT user_id FROM users WHERE user_name == {0}".format("'" + userName + "'")
+    c.execute(command)
+    id = c.fetchone()[0]
+    return id
+#======================== DB FXNS =========================
 
 
-#===========================================================
-
-
-#============================MAIN===========================
+#========================  TESTS  =========================
 
 # CREATE USERS TABLE
-tableCreator('users', 'user_name text', 'passwords text', 'user_id integer')
-
-# CREATE sararIsLateToClass Story
-createStory("sararIsLateToClass")
-
-registerUser("sarar123", "iAmBadAtLeague!")
-addToStory("sararIsLateToClass", "sarar came to class late and got flamed", 2)
+#tableCreator('users', 'user_name text', 'passwords text', 'user_id integer')
 
 
+#createStory("story")
 
+#registerUser("p", "p")
+#addToStory("story", "yaymebetter!!!!", 1323234)
+#print(verifyUser("p", "p"))
+#print(findUser("p"))
+#findStory()
+#print(getID_fromUser('p'))
 
-
+#======================== SAVE CHANGES =========================
 db.commit() #save changes
 db.close()  #close database
