@@ -25,7 +25,13 @@ def insertRow(tableName, data):
     @data is a tuple containing data to be entered
     '''
     command = "INSERT INTO {0} VALUES(?, ?, ?)"
+    DB_FILE = 'data/azrael_stories.db'
+    db = sqlite3.connect(DB_FILE)  # open if file exists, otherwise create
+    c = db.cursor()
     c.execute(command.format(tableName), data)
+    db.commit()  # save changes
+    db.close()  # close database
+
 
 #========================HELPER FXNS=======================
 

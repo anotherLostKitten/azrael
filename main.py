@@ -6,23 +6,34 @@ import os
 import sqlite3
 
 from flask import Flask, redirect, url_for, render_template, request, flash, get_flashed_messages
+import utils.db as dog
 
-DB_FILE = "data/dog.db"
+DB_FILE = "data/azrael_stories.db"
 
-db = sqlite3.connect(DB_FILE)  # open if file exists, otherwise create
-c = db.cursor()  # facilitate db ops
+x = sqlite3.connect(DB_FILE)  # open if file exists, otherwise create
+c = x.cursor()  # facilitate db ops
 
 app = Flask(__name__)
 
 app.secret_key = os.urandom(32)
 
-test = c.execute("SELECT * FROM Users;")
-
 accts = {}
-for x in test:
-    accts[str(x[0])] = {"pass": str(x[1]), "user": int(x[2])}
 
-print (accts)
+def reloadAccts():
+    test = c.execute("SELECT * FROM users;")
+
+    accts = {}
+
+    for x in test:
+        accts[str(x[0])] = {"pass": str(x[1]), "user": int(x[2])}
+
+    print (accts)
+
+reloadAccts()
+
+who  = {}
+
+dog.insertRow('users', ('j', 0, 't'))
 
 @app.route('/')
 def hello_world():
@@ -42,6 +53,7 @@ def auth():
     if request.form["submit"] == "login":
         if request.form["username"] in accts:
             if str(request.form['password']) == accts[request.form["username"]]["pass"]:
+                who["username"] = request.form["username"]
                 return "u r men"
             print(str(request.form['password']), accts[request.form["username"]])
             flash('bad! not ur password bro')
@@ -51,11 +63,10 @@ def auth():
         return(render_template("login.html"))
     #REGISTERING MEN
     else:
-        if len(request.form["username"]) == 0 or request.form["username"] not in accts:
-            if len(request.form['password']) == 0:
+        if len(request.form["username"]) > 0 and request.form["username"] not in accts:
+            if len(request.form['password']) > 0:
                 #add acct
                 return "u r men"
-
             flash('bad! pass too short')
         else:
             flash('bad! username taken or maybe it\'s too short!')

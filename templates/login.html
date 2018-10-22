@@ -5,18 +5,10 @@
   </head>
   <body>
     {% set msgs = get_flashed_messages() %}
-<<<<<<< HEAD
          {% for each in msgs %}
          {{each}}
          <br>
          {% endfor %}
-=======
-    {% for each in msgs %}
-    {{each}}
-    <br>
-    {% endfor %} 
->>>>>>> 620833881249e3d7b5ba21bbdd22f7d554d73521
-
     {% block content %}
     <form action="/auth" method="post">
       <p>You are not logged in. </p>
