@@ -2,6 +2,11 @@
 
 # Da Art of Storytellin'
 
+Our app is a website where the user can register or log in with an existing 
+account! The user will be able to either view stories they have contributed 
+to, create a new story, or add to an existing story. They will only be able to
+ add to each story once.
+
 For our app to run the way it is intended, there are certain rules that must
 be followed. One is the dependencies that have to be present. See dependencies
 to learn more!
