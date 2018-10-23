@@ -6,12 +6,12 @@ import os
 import sqlite3
 
 from flask import Flask, redirect, url_for, render_template, request, flash, get_flashed_messages
-import utils.db as dog
+# import utils.db as dog
 
 DB_FILE = "data/azrael_stories.db"
 
-x = sqlite3.connect(DB_FILE)  # open if file exists, otherwise create
-c = x.cursor()  # facilitate db ops
+db = sqlite3.connect(DB_FILE)  # open if file exists, otherwise create
+c = db.cursor()  # facilitate db ops
 
 app = Flask(__name__)
 
@@ -23,21 +23,37 @@ def droptable(tablename):
     command = "DROP TABLE IF EXISTS {0};".format(tablename)
     c.execute(command)
 
+def addrow(table,tup):
+    checky = c.execute("SELECT * FROM {tname};".format(tname = table))
+    is_in = tup in [x for x in checky]
+    if not is_in:
+        command = "INSERT INTO {0} VALUES(?, ?, ?)"
+        c.execute(command.format("users"), tup)
+        print("added", tup )
+        return;
+    print("did not add", tup)
 
-dog.insertRow('users', ('j', 't', 0))
+def cleartable(table):
+    command = "DELETE FROM {tname}"
+    c.execute(command.format(tname = table))
+
+#cleartable("users")
+
+addrow("users",("w", "z", 0))
+addrow("users",("w", "z", 0))
+addrow("users",("wjt", "zwa", 2))
+addrow("users",("wwww", "user", 2))
+
+# dog.insertRow('users', ('j', 't', 0))
 
 def reloadAccts():
     test = c.execute("SELECT * FROM users;")
-    print("<==start db==>")
-    for x in test:
-        print (x)
-    print("<==end db==>")
     accts = {}
-
     for x in test:
-        accts[str(x[0])] = {"pass": str(x[1]), "user": int(x[2])}
-
+        accts[str(x[0])] = {"pass": str(x[1]), "id": int(x[2])}
+    print("<==start dict==>")
     print (accts)
+    print("<==end dict==>")
 
 reloadAccts()
 
@@ -75,7 +91,7 @@ def auth():
         if len(request.form["username"]) > 0 and request.form["username"] not in accts:
             if len(request.form['password']) > 0:
                 #add acct
-                return "u r men"
+                addrow("users",request.form["username"],request.form['password'],2)
             flash('bad! pass too short')
         else:
             flash('bad! username taken or maybe it\'s too short!')
