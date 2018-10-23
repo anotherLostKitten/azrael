@@ -145,3 +145,9 @@ fixed one of jwt's functions--will continue to fix l8r
 
 we should update the pdf soon
 <==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+tungJ -- 2018-10-23 14:13
+added more functions for jwt
+works for a general db now and you can add shtuff-ish
+<==================================== CLOSE ==================================>
