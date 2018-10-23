@@ -14,14 +14,14 @@ to learn more!
 
 ### How 2 Launch
 1. Clone the repo! You can clone with ssh or https by copying the link, then
-'''
+```
 git clone \<link\>
-'''
+```
 2. Open a virtual environment!
 3. Use the virtual environment to run 
-'''
+```
 python main.py
-'''
+```
 4. Interact with our project at http://127.0.0.1:5000/ on any browser!
 
 ### Dependecies
@@ -29,11 +29,11 @@ python main.py
 We are using python 3 for this assignment, because pip is built into it!
 - <b>Wheel</b>:
 Once you have python 3, you can run the command: 
-'''
+```
 pip install wheel
-'''
+```
 - <b>Flask</b>:
 Once you have python 3 and wheel installed, you just run the command:
-'''
+```
 pip install flask
-'''
+```
