@@ -22,16 +22,17 @@ git clone \<link\>
 '''
 python main.py
 '''
+4. Interact with our project at http://127.0.0.1:5000/ on any browser!
 
 ### Dependecies
-- Python 3
+- <b>Python 3</b>:
 We are using python 3 for this assignment, because pip is built into it!
-- Wheel
+- <b>Wheel</b>:
 Once you have python 3, you can run the command: 
 '''
 pip install wheel
 '''
-- Flask
+- <b>Flask</b>:
 Once you have python 3 and wheel installed, you just run the command:
 '''
 pip install flask
