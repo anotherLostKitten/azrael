@@ -136,3 +136,12 @@ getID_fromUser(userName)
 
 These methods should assist tungJ in his Flask duties.
 <==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+tungJ -- 2018-10-23 08:50
+most of the homepagey stuff is working, but i need some help implementing db usage (i had it working with a dummy db)
+fixed the readme too
+fixed one of jwt's functions--will continue to fix l8r
+
+we should update the pdf soon
+<==================================== CLOSE ==================================>
