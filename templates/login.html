@@ -1,31 +1,26 @@
-<html>
-   {% extends "base.html" %}
-  <head>
+{% extends "base.html" %}
+<body>
+  
+  {% set msgs = get_flashed_messages() %}
+  {% for each in msgs %}
+  {{each}}
+  <br>
+  {% endfor %}
 
-  </head>
-   <body>
-     
-    {% set msgs = get_flashed_messages() %}
-         {% for each in msgs %}
-         {{each}}
-         <br>
-         {% endfor %}
+  {% block content %}
+  <form action="/auth" method="post">
+    <p>You are not logged in. </p>
 
-    {% block content %}
-    <form action="/auth" method="post">
-      <p>You are not logged in. </p>
+    Username: <input type="text" name="username" value = "men">   <font color="red"> {{incUser}} </font>
+    <br>
+    Password: <input type="password" name="password" value = "men">   <font color="red"> {{incPass}} </font>
+    <br>
+    <input type="submit" name="submit" value = "login">
+  </form>
 
-      Username: <input type="text" name="username" value = "men">   <font color="red"> {{incUser}} </font>
-      <br>
-      Password: <input type="password" name="password" value = "men">   <font color="red"> {{incPass}} </font>
-      <br>
-      <input type="submit" name="submit" value = "login">
-    </form>
-
-    {% endblock %}
+  {% endblock %}
     </br>
-<a href = "/root"><button type="button" name ="LI">HomePage</button>  </a>
+    <a href = "/root"><button type="button" name ="LI">HomePage</button>  </a>
 
-  </body>
+</body>
 
-</html>
