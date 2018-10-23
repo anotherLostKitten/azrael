@@ -6,9 +6,10 @@ import sqlite3   # enable control of an sqlite database
 
 # set up to read/write to db files
 
-DB_FILE='data/azrael_stories.db'
-db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
-c = db.cursor()               #facilitate db ops
+DB_FILE = '../data/azrael_stories.db'
+db = sqlite3.connect(DB_FILE)  # open if file exists, otherwise create
+c = db.cursor()
+#facilitate db ops
 
 #========================HELPER FXNS=======================
 def tableCreator(tableName, col0, col1, col2):
@@ -24,10 +25,10 @@ def insertRow(tableName, data):
     @tableName is the name the table being written to
     @data is a tuple containing data to be entered
     '''
-    command = "INSERT INTO {0} VALUES(?, ?, ?)"
-    DB_FILE = 'data/azrael_stories.db'
+    DB_FILE = '../data/azrael_stories.db'
     db = sqlite3.connect(DB_FILE)  # open if file exists, otherwise create
     c = db.cursor()
+    command = "INSERT INTO {0} VALUES(?, ?, ?)"
     c.execute(command.format(tableName), data)
     db.commit()  # save changes
     db.close()  # close database
@@ -140,17 +141,17 @@ def getID_fromUser(userName):
 #========================  TESTS  =========================
 
 # CREATE USERS TABLE
-#tableCreator('users', 'user_name text', 'passwords text', 'user_id integer')
+# tableCreator('users', 'user_name text', 'passwords text', 'user_id integer')
+#
+#
+# createStory("story")
 
-
-#createStory("story")
-
-#registerUser("p", "p")
-#addToStory("story", "yaymebetter!!!!", 1323234)
-#print(verifyUser("p", "p"))
-#print(findUser("p"))
-#findStory()
-#print(getID_fromUser('p'))
+registerUser("p", "p")
+addToStory("story", "yaymebetter!!!!", 1323234)
+print(verifyUser("p", "p"))
+print(findUser("p"))
+findStory("story")
+print(getID_fromUser('p'))
 
 #======================== SAVE CHANGES =========================
 db.commit() #save changes

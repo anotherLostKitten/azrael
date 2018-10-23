@@ -19,9 +19,19 @@ app.secret_key = os.urandom(32)
 
 accts = {}
 
+def droptable(tablename):
+    command = "DROP TABLE IF EXISTS {0};".format(tablename)
+    c.execute(command)
+
+
+dog.insertRow('users', ('j', 't', 0))
+
 def reloadAccts():
     test = c.execute("SELECT * FROM users;")
-
+    print("<==start db==>")
+    for x in test:
+        print (x)
+    print("<==end db==>")
     accts = {}
 
     for x in test:
@@ -33,7 +43,6 @@ reloadAccts()
 
 who  = {}
 
-dog.insertRow('users', ('j', 0, 't'))
 
 @app.route('/')
 def hello_world():
