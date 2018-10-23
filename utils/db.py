@@ -11,6 +11,8 @@ db = sqlite3.connect(DB_FILE)  # open if file exists, otherwise create
 c = db.cursor()
 #facilitate db ops
 
+
+    
 #========================HELPER FXNS=======================
 def tableCreator(tableName, col0, col1, col2):
     '''
@@ -146,13 +148,13 @@ def getID_fromUser(userName):
 #
 # createStory("story")
 
-registerUser("p", "p")
-addToStory("story", "yaymebetter!!!!", 1323234)
-print(verifyUser("p", "p"))
-print(findUser("p"))
-findStory("story")
-print(getID_fromUser('p'))
+#registerUser("p", "p")
+#addToStory("story", "yaymebetter!!!!", 1323234)
+#print(verifyUser("p", "p"))
+#print(findUser("p"))
+#findStory("story")
+#print(getID_fromUser('p'))
 
 #======================== SAVE CHANGES =========================
-db.commit() #save changes
-db.close()  #close database
+#db.commit() #save changes
+#db.close()  #close database
