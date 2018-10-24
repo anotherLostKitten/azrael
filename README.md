@@ -37,3 +37,11 @@ Once you have python 3 and wheel installed, you just run the command:
 ```
 pip install flask
 ```
+### Problems?
+#### If you get an error not listed below, please open an issue!
+<b>Address already in use:</b>
+The address 127.0.0.1 at port 5000 is already in use! Please close that server.
+
+<b>Flask/Wheel/Python on init run: </b>
+Either your virtual environment is not on OR the version of py/flask/wheel is not compliant with what we have listened in our dependencies! Follow the instructions; read twice cut once!
+
