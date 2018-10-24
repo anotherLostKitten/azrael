@@ -28,11 +28,14 @@ Story Builder
 Completed:
 design.pdf
 db.py
+login/out functions
+view user's contributed stories
+creating new story function
 
 To Do:
 revise design
-login/out functions
-html templates
+view.html template
+view new (user has no contributed to) stories functions
 
  ______   ______   __   __   __       ______   _______
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
@@ -162,4 +165,9 @@ can log out of accounts
 need to work on viewing stories not contributed to
 fixed aseerS's templates...
 aseerS needs to fix view.html
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+wongJ -- 2018-10-24 05:43
+Added documentation for class DB_Manager
 <==================================== CLOSE ==================================>
