@@ -36,7 +36,7 @@ class DB_Manager:
         '''
         c = self.openDB()
         if not self.isInDB(tableName):
-            command = "CREATE TABLE {0}({1}, {2}, {3});".format(tableName, col0, col1, col2)
+            command = "CREATE TABLE '{0}'({1}, {2}, {3});".format(tableName, col0, col1, col2)
             c.execute(command)
 
 
@@ -47,7 +47,8 @@ class DB_Manager:
          @data is a tuple containing data to be entered
        '''
        c = self.openDB()
-       command = "INSERT INTO {0} VALUES(?, ?, ?)"
+       command = "INSERT INTO '{0}' VALUES(?, ?, ?)"
+       print(command)
        c.execute(command.format(tableName), data)
 
 
@@ -70,7 +71,7 @@ class DB_Manager:
         PRINTS OUT ALL ROWS OF INPUT tableName
         '''
         c = self.openDB()
-        command = "SELECT * FROM {0}".format("'" + tableName + "'")
+        command = "SELECT * FROM '{0}'".format(tableName)
         c.execute(command)
         print(c.fetchall())
 
@@ -103,7 +104,7 @@ class DB_Manager:
         if user_id in self.get_user_ids(storyTitle):
             return False
         # otherwise add text to story
-        command = "SELECT story_id FROM {0} WHERE story_id == (SELECT max(story_id) FROM {0})".format(storyTitle)
+        command = "SELECT story_id FROM '{0}' WHERE story_id == (SELECT max(story_id) FROM '{0}')".format(storyTitle)
         c.execute(command)
         selectedVal = c.fetchone()
         # max_id represents the id of the most recent story_line in storyTitle table
@@ -121,7 +122,7 @@ class DB_Manager:
         RETURNS TEXT OF MOST RECENT UPDATE TO storyTitle
         '''
         c = self.openDB()
-        command = "SELECT story_line FROM {0} WHERE story_id == (SELECT max(story_id) FROM {0})".format("'" + storyTitle + "'")
+        command = "SELECT story_line 'FROM' {0} WHERE story_id == (SELECT max(story_id) FROM '{0}')".format(storyTitle)
         c.execute(command)
         selectedVal = self.c.fetchone()[0]
         return selectedVal
@@ -131,7 +132,7 @@ class DB_Manager:
         RETURNS ALL TEXT OF storyTitle
         '''
         c = self.openDB()
-        command = "SELECT story_line FROM {0}".format("'" + storyTitle + "'")
+        command = "SELECT story_line FROM '{0}'".format(storyTitle)
         c.execute(command)
         selectedVal = c.fetchall()
         textList = [x[0] for x in selectedVal]
@@ -164,11 +165,12 @@ class DB_Manager:
         contributions = set()
         for story in self.getStories():
             id = "'" + str(self.getID_fromUser(userName)) + "'"
-            command = "SELECT user_id FROM {0} WHERE user_id = {1}".format(story, id)
+            command = "SELECT user_id FROM '{0}' WHERE user_id = {1};".format(story, id)
             c.execute(command)
             selectedVal = c.fetchone()
             if selectedVal != None:
                 contributions.add(story)
+        #print(contributions)
         return contributions
 
     def getUsers(self):
@@ -186,7 +188,8 @@ class DB_Manager:
         RETURNS SET OF user_ids CONTRIBUTED TO storyTitle
         '''
         c = self.openDB()
-        command = "SELECT user_id FROM {0}".format("'" + storyTitle + "'")
+        command = "SELECT user_id FROM '{0}'".format(storyTitle)
+        print(command)
         c.execute(command)
         ids = set(x[0] for x in c.fetchall())
         return ids
@@ -236,9 +239,11 @@ class DB_Manager:
         RETURNS user_id OF userName
         '''
         c = self.openDB()
-        command = "SELECT user_id FROM users WHERE user_name == {0}".format("'" + userName + "'")
+        #print("--------------" + userName)
+        command = "SELECT user_id FROM users WHERE user_name == '{0}'".format(userName)
         c.execute(command)
         id = c.fetchone()[0]
+        #print(id)
         return id
     #======================== DB FXNS =========================
 #======================== END OF CLASS DB_Manager =========================

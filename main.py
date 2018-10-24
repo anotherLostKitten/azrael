@@ -21,6 +21,7 @@ def home():
     if user in session:
         data = azrael.DB_Manager(DB_FILE)
         userStories = sorted(data.getStoriesContributedTo(user))
+        print(userStories)
         return render_template('user.html', user_name = user, errors = False, stories = userStories)
     return render_template("home.html", errors = False)
 
