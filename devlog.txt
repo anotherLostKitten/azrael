@@ -190,4 +190,5 @@ added button for adding(this and view do not work yet)
 <====================================NEW ENTRY================================>
 tungJ -- 2018-10-24 17:16
 real quick just updated readme to include potential errors
+rewrote the summary/intro
 <==================================== CLOSE ==================================>
