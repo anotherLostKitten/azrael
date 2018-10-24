@@ -1,11 +1,8 @@
 {% extends "base.html" %}
-<body>
-  <form action="">
-    Copy & Paste Story: <input type="text" name="input"><br>
-    <input type="submit" value="Submit">
-  </form> 
-</br>
-<a href = "/root"><button type="button" name ="LI">HomePage</button>  </a>
+{% block title %} {{storyTitle}} {% endblock %}
+{% block content %}
+<h2> {{storyTitle}} </h2>
 
-</body>
+<p> {{content}} </p>
 
+{% endblock %}

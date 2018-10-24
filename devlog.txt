@@ -151,3 +151,15 @@ tungJ -- 2018-10-23 14:13
 added more functions for jwt
 works for a general db now and you can add shtuff-ish
 <==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+wongJ -- 2018-10-24 05:43
+enabled instantiation of DB_Manager objects in db.py
+can register accounts properly
+can log into accounts and view stories the user contributed to
+a logged in user can also create a new story
+can log out of accounts
+need to work on viewing stories not contributed to
+fixed aseerS's templates...
+aseerS needs to fix view.html
+<==================================== CLOSE ==================================>

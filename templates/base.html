@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-        <h1>Hello My Dude</h1>{# header #}
         {% block head %}
-         <title>    {% block title %} {% endblock %}</title> 
+         <title>    {% block title %} {% endblock %}</title>
         {% endblock %}
         </title>
-    </head>
-<body>
-  <a href = "/root"><button type="button" name ="LI">HomePage</button>  </a>
+  </head>
 
-        <font color="red"> {% set msgs = get_flashed_messages() %}{# program is now  aware there are flash messages #}
+  <body>
+       <a href = "/"> <button type="button" name ="LI"> Homepage </button>  </a>
+       {% if errors %}
+       <font color = 'red'> {% set msgs = get_flashed_messages() %}{# program is now  aware there are flash messages #}
             {% for each in msgs %}{# Loops through messages #}
-                {{each}}
+                <br>{{each}}
                 <br>
             {% endfor %}
-        </font>
-
+       </font>
+       {% endif %}
         {% block content %}
+
         {% endblock %}
 
-    </body>
+     {% block footer %}
+     &copy; Copyright -- azrael 2018
+     {% endblock %}
+</body>
+
 </html>

@@ -1,18 +1,22 @@
 {% extends "base.html" %}
+{% block title %} azrael Stories - Register {% endblock %}
+{% set msgs = get_flashed_messages() %}
+{% for each in msgs %}
+{{each}}
+<br>
+{% endfor %}
+{% block content %}
+  <h3><i> Register for an azrael account </h3></i>
+  <form action="/auth" method="POST">
 
-<body>
-
-  <form action="/auth" method="post">
-    <p>Sign up my dude </p>
-
-    Username: <input type="text" name="username" value = "men">   <font color="red"> {{newUser}} </font>
-    <br>
-    Password: <input type="password" name="password" value = "men">   <font color="red"> {{newPass}} </font>
-    <br>
-    <input type="submit" name="submit" value = "register">
+    <b>
+         Username: <input type = "text" name = "username" placeholder = "user">
+         <br><br>
+         Password&#160;: <input type = "password" name = "password" placeholder = "password">
+    </b>
+    <br><br>
+    <input type="submit" name="submit" value = "Register">
+    <br><br>
   </form>
 
-</br>
-<a href = "/root"><button type="button" name ="LI">HomePage</button>  </a>
-
-</body>
+{% endblock %}
