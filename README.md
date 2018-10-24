@@ -2,14 +2,12 @@
 
 # Da Art of Storytellin'
 
-Our app is a website where the user can register or log in with an existing 
-account! The user will be able to either view stories they have contributed 
-to, create a new story, or add to an existing story. They will only be able to
- add to each story once.
+Team azrael (note the lowercase a!) brings to you, the valued user, a website which allows its registered members to contribute to stories anonymously created and contributed to by others.
 
-For our app to run the way it is intended, there are certain rules that must
-be followed. One is the dependencies that have to be present. See dependencies
-to learn more!
+Non registered members do not fret!! We implemented a REGISTER feature in addition to logining in. All login information is stored in 'users' table of data/azrael_stories.db. 
+
+After logging in, users have the option of viewing (full) stories they have previously contributed to, create a new story and write its very first line, or add to existing stories created to by other users. When adding to a story created by another user, the user only has the ability to view the last line contributed.
+All stories are stored in their own table in data/azrael_stories.db where the table name is the name of the story.
 
 
 ### How 2 Launch
@@ -24,9 +22,10 @@ python main.py
 ```
 4. Interact with our project at http://127.0.0.1:5000/ on any browser!
 
-### Dependecies
+### Dependencies
 - <b>Python 3</b>:
 We are using python 3 for this assignment, because pip is built into it!
+A major stdlib we use is sqlite3. 
 - <b>Wheel</b>:
 Once you have python 3, you can run the command: 
 ```
