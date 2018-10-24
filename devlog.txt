@@ -186,3 +186,8 @@ fixed aseerS's template
 can now view own stories
 added button for adding(this and view do not work yet)
 <==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+tungJ -- 2018-10-24 17:16
+real quick just updated readme to include potential errors
+<==================================== CLOSE ==================================>
