@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %} azrael Stories {% endblock %}
+{% block content %}
+  <form action="/view">
+    <table>
+      {% for p in stories %}
+      <tr>
+      	{{ p }}
+      </tr>
+      {% endfor %}
+    </table>
+  </br>
+  </form> 
+{% endblock %}
+
+
+

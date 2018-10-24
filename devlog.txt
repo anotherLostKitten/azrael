@@ -97,6 +97,14 @@ edited and renamed html files
 
 <==================================== CLOSE ==================================>
 
+
+<====================================NEW ENTRY================================>
+aseerS -- 2018-10-19 00:40
+Created and pushed, basic templates needed. Did not push on the first day.
+
+<==================================== CLOSE ==================================>
+
+
 <====================================NEW ENTRY================================>
 wongJ -- 2018-10-19 19:51
 Renamed db_stuff.py to utils/db.py
@@ -122,6 +130,15 @@ getID_fromUser(userName)
 These methods should assist tungJ in his Flask duties.
 <==================================== CLOSE ==================================>
 
+
+<====================================NEW ENTRY================================>
+aseerS -- 2018-10-22 00:45
+Created the base.html and view.html. 
+Each html page, had an extension tag added, to lessen code.
+View.html should be able to let teh user see all existing stories.
+Base has a home button to let the user access all other pages
+<==================================== CLOSE ==================================>
+
 <====================================NEW ENTRY================================>
 tungJ -- 2018-10-23 08:50
 most of the homepagey stuff is working, but i need some help implementing db usage (i had it working with a dummy db)
@@ -135,6 +152,11 @@ we should update the pdf soon
 tungJ -- 2018-10-23 14:13
 added more functions for jwt
 works for a general db now and you can add shtuff-ish
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+aseerS -- 2018-10-23 13:50
+Edited all existing html files, and deleted excess code and tags.
 <==================================== CLOSE ==================================>
 
 <====================================NEW ENTRY================================>
