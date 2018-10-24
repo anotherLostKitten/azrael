@@ -5,16 +5,16 @@
 import sqlite3   # enable control of an sqlite database
 
 class DB_Manager:
-   '''
-   HOW TO USE:
-   Every method opensDB by connecting to the inputted path of 
-   a database file. After performing all operations on the 
-   database, the instance of the DB_Manager must save using
-   the save method.
-   The operations/methods can be found below. DB_Manager 
-   has been custom fitted to work with
-   P00 -- Da Art of Storytellin'
-   '''
+    '''
+    HOW TO USE:
+    Every method opensDB by connecting to the inputted path of 
+    a database file. After performing all operations on the 
+    database, the instance of the DB_Manager must save using
+    the save method.
+    The operations/methods can be found below. DB_Manager 
+    has been custom fitted to work with
+    P00 -- Da Art of Storytellin'
+    '''
     def __init__(self, dbfile):
         '''
         SET UP TO READ/WRITE TO DB FILES
