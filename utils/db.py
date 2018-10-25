@@ -48,7 +48,6 @@ class DB_Manager:
        '''
        c = self.openDB()
        command = "INSERT INTO '{0}' VALUES(?, ?, ?)"
-       print(command)
        c.execute(command.format(tableName), data)
 
 
@@ -189,7 +188,6 @@ class DB_Manager:
         '''
         c = self.openDB()
         command = "SELECT user_id FROM '{0}'".format(storyTitle)
-        print(command)
         c.execute(command)
         ids = set(x[0] for x in c.fetchall())
         return ids
@@ -230,6 +228,7 @@ class DB_Manager:
         command = "SELECT user_name, passwords FROM users WHERE user_name = {0}".format("'" + userName + "'")
         c.execute(command)
         selectedVal = c.fetchone()
+        print(selectedVal)
         if userName == selectedVal[0] and password == selectedVal[1]:
             return True
         return False

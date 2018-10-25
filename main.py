@@ -40,7 +40,8 @@ def auth():
     username, password = request.form["username"], request.form['password']
     # LOGGING IN
     if request.form["submit"] == "Login":
-        if data.verifyUser(username, password ) :
+        print(username, password)
+        if username != "" and password != "" and data.verifyUser(username, password ) :
             session[username] = password
             setUser(username)
             data.save()
