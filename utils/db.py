@@ -228,7 +228,8 @@ class DB_Manager:
         command = "SELECT user_name, passwords FROM users WHERE user_name = {0}".format("'" + userName + "'")
         c.execute(command)
         selectedVal = c.fetchone()
-        print(selectedVal)
+        if selectedVal == None:
+            return False
         if userName == selectedVal[0] and password == selectedVal[1]:
             return True
         return False
