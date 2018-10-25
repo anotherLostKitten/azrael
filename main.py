@@ -62,11 +62,12 @@ def auth():
                 data.save()
                 return redirect(url_for('home'))
             else:
-                flash('Bad password!')
+                flash('Password needs to have stuff in it')
+        elif len(username) == 0:
+            flash("Username needs to have stuff in it")
         else:
             flash("Username already taken!")
         # TRY TO REGISTER AGAIN
-        data.save()
         return render_template("register.html", errors = True)
 
 @app.route('/logout')
