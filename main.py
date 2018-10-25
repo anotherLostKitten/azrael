@@ -87,7 +87,12 @@ def viewstory():
 @app.route('/viewothers')
 def viewothers():
     data = azrael.DB_Manager(DB_FILE)
+    allStories = data.getStories()
+    userStories = data.getStoriesContributedTo(user)
+    notUserStories = filter(lambda x: x not in userStories, allStories)
+    print(notUserStories)
     pass
+
 
 @app.route('/appendToStory')
 def appendToStory():
