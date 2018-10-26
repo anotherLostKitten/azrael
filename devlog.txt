@@ -20,6 +20,7 @@ view.html template
 view new (user has no contributed to) stories functions
 implementing addition to viewing other stories
 more checks for adding stories (replacing old ones/check for page existence)
+stop creating blank pages
  ______   ______   __   __   __       ______   _______
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
 \:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__
