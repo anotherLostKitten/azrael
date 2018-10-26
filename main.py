@@ -12,6 +12,8 @@ app = Flask(__name__)
 user = None
 app.secret_key = os.urandom(32)
 
+not_contr = ()
+
 def setUser(userName):
     global user
     user = userName
@@ -85,6 +87,37 @@ def viewstory():
     data.save()
     return render_template('story.html', storyTitle = storyTitle, content = content)
 
+last_story = None
+
+@app.route('/viewotherstory')
+def viewotherstory():
+    data = azrael.DB_Manager(DB_FILE)
+    storyTitle = request.args['submit']
+    content = data.getStoryText(storyTitle)
+    data.save()
+    last_story = storyTitle
+    return render_template('otherstory.html', storyTitle = storyTitle, content = content)
+
+@app.route('/addauth', methods=["POST"])
+def addauth():
+    data = azrael.DB_Manager(DB_FILE)
+    story_title = last_story
+    content = data.getStoryText(story_title)
+    user_id = data.getID_fromUser(user)
+    newcontent = request.form["txt"]
+    userStories = sorted(data.getStoriesContributedTo(user))
+    data.save()
+    if len(newcontent) > 0:
+        if last_story in not_contr:
+            data.addToStory(last_story, newcontent, user_id)
+            return render_template('user.html', user_name=user, errors=False, stories=userStories)
+        else:
+            flash("you already contributed to this")
+    else:
+        flash("please add content")
+    return (render_template('otherstory.html', storyTitle = story_title, content = content))
+
+
 @app.route('/viewothers')
 def viewothers():
     data = azrael.DB_Manager(DB_FILE)
@@ -92,6 +125,7 @@ def viewothers():
     userStories = data.getStoriesContributedTo(user)
     notUserStories = filter(lambda x: x not in userStories, allStories)
     print(notUserStories)
+    not_contr = notUserStories
     return (render_template("view.html",stories=notUserStories))
 
 @app.route('/creator')
