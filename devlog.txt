@@ -20,6 +20,7 @@ view.html template
 view new (user has no contributed to) stories functions
 implementing addition to viewing other stories
 more checks for adding stories (replacing old ones/check for page existence)
+stop creating blank pages
  ______   ______   __   __   __       ______   _______
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
 \:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__
@@ -191,4 +192,18 @@ added button for adding(this and view do not work yet)
 tungJ -- 2018-10-24 17:16
 real quick just updated readme to include potential errors
 rewrote the summary/intro
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+aseerS -- 2018-10-25 05:30
+View page loop edited
+Re added add.html
+add button addded to some pages
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+tungJ -- 2018-10-25 05:43
+checking for bugs
+added bugs to devlog
+fixed edgecases on login/register
 <==================================== CLOSE ==================================>
