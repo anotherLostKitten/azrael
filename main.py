@@ -16,8 +16,12 @@ def setUser(userName):
     global user
     user = userName
 
+
+
 @app.route('/')
 def home():
+    user = "user"
+    session[user] = "password"
     if user in session:
         data = azrael.DB_Manager(DB_FILE)
         userStories = sorted(data.getStoriesContributedTo(user))
