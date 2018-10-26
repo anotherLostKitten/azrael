@@ -1,15 +1,16 @@
-  {% extends "base.html" %}
- 
-<body>
-  Add New Story
+{% extends "base.html" %}
+{% block title %} azrael Stories {% endblock %}
+{% block content %}
+
+Add New Story
 </br>
 <form action="/add" method="post">
   Copy & Paste Story: <input type="text" name="input"><br>
   <input type="submit" value="Submit">
 	</br>
-
 </form> 
+{% endblock %}
 
 
-  </body>
+
 
