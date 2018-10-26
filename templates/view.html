@@ -4,24 +4,21 @@
 <table>
   <tr>
     <th>
-      Creator
-    </th>
-    <th>
-      Entry
+      Other Stories
     </th>
   </tr>
-  {% for text,id in stories %}
+  {% for storie in stories %}
   <tr>
-    {{ id }}
     <td>
-      {{text}}
+        <form action = '/viewstory'>
+            <input type="submit" name="submit" value = "{{storie}}">
+        </form>
+    </td>
   </tr>
 </tr>
 {% endfor %}
 </table>
   </br>
-  <a href = "/add"> <button type="button" name ="AB"> Add New Story </button>  </a>
-
   {% endblock %}
 
 

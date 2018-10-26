@@ -17,11 +17,8 @@ def setUser(userName):
     user = userName
 
 
-
 @app.route('/')
 def home():
-    user = "user"
-    session[user] = "password"
     if user in session:
         data = azrael.DB_Manager(DB_FILE)
         userStories = sorted(data.getStoriesContributedTo(user))
@@ -95,13 +92,7 @@ def viewothers():
     userStories = data.getStoriesContributedTo(user)
     notUserStories = filter(lambda x: x not in userStories, allStories)
     print(notUserStories)
-    pass
-
-
-@app.route('/appendToStory')
-def appendToStory():
-    data = azrael.DB_Manager(DB_FILE)
-    pass
+    return (render_template("view.html",stories=notUserStories))
 
 @app.route('/creator')
 def storyCreator():
