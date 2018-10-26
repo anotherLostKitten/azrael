@@ -208,3 +208,9 @@ added bugs to devlog
 fixed edgecases on login/register
 can grab stories not written by user
 <==================================== CLOSE ==================================>
+
+
+<====================================NEW ENTRY================================>
+tungJ -- 2018-10-26 11:47
+added buttons so view stories works now
+<==================================== CLOSE ==================================>
