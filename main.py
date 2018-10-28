@@ -26,7 +26,7 @@ def home():
         data = azrael.DB_Manager(DB_FILE)
         userStories = sorted(data.getStoriesContributedTo(user))
         contribute = len(userStories) > 0
-        return render_template('user.html', user_name = user, errors = True, stories = userStories, contributed = contribute)
+        return render_template('user.html', user_name = user, good = True, stories = userStories, contributed = contribute)
     return render_template("home.html", errors = False)
 
 @app.route('/login')
@@ -59,8 +59,8 @@ def auth():
         return render_template("login.html", errors = True)
     # REGISTERING
     else:
-        if len(username) > 0 and not data.findUser(username):
-            if len(password) > 0:
+        if len(username.strip()) != 0 and not data.findUser(username):
+            if len(password.strip()) != 0:
                 # add the account to DB
                 data.registerUser(username, password)
                 data.save()
@@ -91,6 +91,9 @@ def create():
     story, line = request.form['title'], request.form['line']
     if story in allStories:
         flash('Enter a unique story title!')
+        return render_template('create.html', errors = True)
+    if (len(story.strip()) == 0 or len(line.strip())==0):
+        flash("Please don't contribute blank spaces!")
         return render_template('create.html', errors = True)
     id = data.getID_fromUser(user)
     data.createStory(story)
@@ -130,7 +133,9 @@ def addauth():
     data = azrael.DB_Manager(DB_FILE)
     user_id = data.getID_fromUser(user)
     appendContent = request.form["text"]
-    userStories = sorted(data.getStoriesContributedTo(user))
+    if (len(appendContent.strip()) == 0):
+        flash("Please don't contribute blank spaces!")
+        return render_template('otherstory.html', storyTitle=currStory, content=data.findMostRecentUpdate(currStory), errors = True)
     data.addToStory(currStory, appendContent, user_id)
     data.save()
     flash('Contributed to {0}'.format(currStory))
