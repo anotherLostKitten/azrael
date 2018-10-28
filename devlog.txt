@@ -213,6 +213,7 @@ can grab stories not written by user
 <====================================NEW ENTRY================================>
 tungJ -- 2018-10-26 11:47
 added buttons so view stories works now
+added "add" functionality, but it crashes and is untested
 <==================================== CLOSE ==================================>
 
 <====================================NEW ENTRY================================>
