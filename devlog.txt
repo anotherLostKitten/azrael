@@ -230,3 +230,10 @@ for stories.
 Added conditionals for the tables in user.html if they have contributed to any
 story or not.
 <==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+wangZ -- 2018-10-28 14:30
+Tested code with empty user inputs, registering with existing username, using
+symbols in user inputs instead of numbers and letters. Everything works clean!
+<==================================== CLOSE ==================================>
+
