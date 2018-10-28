@@ -16,11 +16,10 @@ creating new story function
 view.html template
 view new (user has no contributed to) stories functions
 implementing addition to viewing other stories
-stop creating blank pages
+stop creating blank pages [doublely fixed]
 
 To Do:
 revise design [URGENT!!! SUPER OUTDATED!!!!!!]
-more checks for adding stories (replacing old ones/check for page existence)
 
  ______   ______   __   __   __       ______   _______
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
@@ -236,5 +235,11 @@ story or not.
 wangZ -- 2018-10-28 14:30
 Tested code with empty user inputs, registering with existing username, using
 symbols in user inputs instead of numbers and letters. Everything works clean!
+<==================================== CLOSE ==================================>
+
+
+<====================================NEW ENTRY================================>
+tungJ -- 2018-10-28 18:27
+no forms can be filled out with whitespace now 
 <==================================== CLOSE ==================================>
 
