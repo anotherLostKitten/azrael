@@ -7,6 +7,7 @@
 </form>
 <h3> {{user_name}}'s Page </h3>
 
+{% if contributed %}
 <h4> Stories Contributed To </h4>
 <table>
      <thead>
@@ -30,9 +31,14 @@
           {% endfor %}
 
 </table>
+{% endif %}
+
+{% if not contributed %}
+   <p> Looks like you haven't contributed to anything. Get started below! </p>
+{% endif %}
 <br>
 <a href = "/creator"><button type="button" name ="create">New Story</button>  </a> <br><br>
-<a href = "/viewothers"><button type="button" name ="view">View/Add to Other Stories</button>  </a><br><br>
+<a href = "/viewothers"><button type="button" name ="view">Add to Other Stories</button>  </a><br><br>
 
 <br><br>
 <br>

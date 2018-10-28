@@ -3,8 +3,9 @@
 {% block content %}
 <h2> New Story </h2>
 <form action="/create" method="post">
-  Story Title&#160;: <input type="text" name="title" placeholder="title" required><br>
-  Story Text&#160;: <input type="text" name="line" placeholder="text" required>
+  Story Title&#160;: <input type="text" name="title" placeholder="title" required><br><br>
+  Story Text&#160;: <br>
+  <textarea rows = '4' cols = '50' type="text" name="line" placeholder = 'Your text here!' required></textarea>
   <br><br>
   <input type="submit" value="Submit">
 	</br>

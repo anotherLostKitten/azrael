@@ -8,6 +8,7 @@
   </head>
 
   <body>
+       <center>
        <a href = "/"> <button type="button" name ="LI"> Homepage </button>  </a>
        {% if errors %}
        <font color = 'red'> {% set msgs = get_flashed_messages() %}{# program is now  aware there are flash messages #}
@@ -17,6 +18,7 @@
             {% endfor %}
        </font>
        {% endif %}
+
         {% block content %}
 
         {% endblock %}
@@ -24,6 +26,7 @@
      {% block footer %}
      &copy; Copyright -- azrael 2018
      {% endblock %}
+     </center>
 </body>
 
 </html>

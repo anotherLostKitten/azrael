@@ -13,14 +13,15 @@ db.py
 login/out functions
 view user's contributed stories [fixed : )]
 creating new story function
-
-To Do:
-revise design [URGENT!!! SUPER OUTDATED!!!!!!]
 view.html template
 view new (user has no contributed to) stories functions
 implementing addition to viewing other stories
-more checks for adding stories (replacing old ones/check for page existence)
 stop creating blank pages
+
+To Do:
+revise design [URGENT!!! SUPER OUTDATED!!!!!!]
+more checks for adding stories (replacing old ones/check for page existence)
+
  ______   ______   __   __   __       ______   _______
 /_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\
 \:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__
@@ -219,4 +220,13 @@ wongJ -- 2018-10-27 21:55
 Users can now add to existing stories they have not contributed to yet.
 Users are flashed a message about which story they added to and are redirected
 to their user page after contributing.
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+wongJ -- 2018-10-27 23:42
+Centered body in base.html
+Use textarea tags instead of input boxes for when inputting long lines of text
+for stories.
+Added conditionals for the tables in user.html if they have contributed to any
+story or not.
 <==================================== CLOSE ==================================>

@@ -7,7 +7,7 @@ import sqlite3   # enable control of an sqlite database
 class DB_Manager:
     '''
     HOW TO USE:
-    Every method opensDB by connecting to the inputted path of
+    Every method openDB by connecting to the inputted path of
     a database file. After performing all operations on the
     database, the instance of the DB_Manager must save using
     the save method.
@@ -239,18 +239,15 @@ class DB_Manager:
         RETURNS user_id OF userName
         '''
         c = self.openDB()
-        #print("--------------" + userName)
         command = "SELECT user_id FROM users WHERE user_name == '{0}'".format(userName)
         c.execute(command)
         id = c.fetchone()[0]
-        #print(id)
         return id
     #======================== DB FXNS =========================
 #======================== END OF CLASS DB_Manager =========================
 
 # TESTS
-#x = DB_Manager("../data/azrael_stories.db")
-
+#x = DB_Manager("../data/azrael.db")
 #x.tableCreator('users', 'user_name text', 'passwords text', 'user_id integer')
 #x.addToStory('abc', 'snitcher13123', 5)
 #print(x.getStoryText('abc'))

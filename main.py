@@ -13,9 +13,6 @@ user = None
 currStory = None
 app.secret_key = os.urandom(32)
 
-
-not_contr = ()
-
 def setUser(userName):
     global user
     user = userName
@@ -28,7 +25,8 @@ def home():
     if user in session:
         data = azrael.DB_Manager(DB_FILE)
         userStories = sorted(data.getStoriesContributedTo(user))
-        return render_template('user.html', user_name = user, errors = True, stories = userStories)
+        contribute = len(userStories) > 0
+        return render_template('user.html', user_name = user, errors = True, stories = userStories, contributed = contribute)
     return render_template("home.html", errors = False)
 
 @app.route('/login')
@@ -138,13 +136,6 @@ def addauth():
     flash('Contributed to {0}'.format(currStory))
     setStory(None)
     return redirect(url_for('home'))
-
-
-
-
-
-
-
 
 if __name__ == '__main__':
     app.debug = True

@@ -2,14 +2,18 @@
 {% block content %}
 <h2> {{storyTitle}} </h2>
 
+<p><b><u> Most recent update</u>: </b></p>
 <p> {{content}} </p>
 
     <form action="/addauth" method="post">
-          Add your line to the story: <input type = "text" name = "text" placeholder = "Type your line here!" required>
+          Add your line to the story
+          <br>
+          <textarea rows = '4' cols = '50' type = "text" name = "text" placeholder = 'Your text here!' required></textarea>
     <br>
     <br>
 
-    <input type="submit" name="submit" value = "add it!">
+    <input type="submit" name="submit" value = "Add!">
     </form>
+    <br>
 
 {% endblock %}
