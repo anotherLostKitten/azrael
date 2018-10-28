@@ -135,7 +135,7 @@ These methods should assist tungJ in his Flask duties.
 
 <====================================NEW ENTRY================================>
 aseerS -- 2018-10-22 00:45
-Created the base.html and view.html. 
+Created the base.html and view.html.
 Each html page, had an extension tag added, to lessen code.
 View.html should be able to let teh user see all existing stories.
 Base has a home button to let the user access all other pages
@@ -209,8 +209,14 @@ fixed edgecases on login/register
 can grab stories not written by user
 <==================================== CLOSE ==================================>
 
-
 <====================================NEW ENTRY================================>
 tungJ -- 2018-10-26 11:47
 added buttons so view stories works now
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+wongJ -- 2018-10-27 21:55
+Users can now add to existing stories they have not contributed to yet.
+Users are flashed a message about which story they added to and are redirected
+to their user page after contributing.
 <==================================== CLOSE ==================================>

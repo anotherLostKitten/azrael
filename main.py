@@ -10,22 +10,25 @@ from utils import db as azrael
 DB_FILE = "data/azrael_stories.db"
 app = Flask(__name__)
 user = None
+currStory = None
 app.secret_key = os.urandom(32)
+
 
 not_contr = ()
 
 def setUser(userName):
     global user
     user = userName
-
+def setStory(storyTitle):
+    global currStory
+    currStory = storyTitle
 
 @app.route('/')
 def home():
     if user in session:
         data = azrael.DB_Manager(DB_FILE)
         userStories = sorted(data.getStoriesContributedTo(user))
-        print(userStories)
-        return render_template('user.html', user_name = user, errors = False, stories = userStories)
+        return render_template('user.html', user_name = user, errors = True, stories = userStories)
     return render_template("home.html", errors = False)
 
 @app.route('/login')
@@ -79,55 +82,6 @@ def logout():
     setUser(None)
     return redirect(url_for('home'))
 
-@app.route('/viewstory')
-def viewstory():
-    data = azrael.DB_Manager(DB_FILE)
-    storyTitle = request.args['submit']
-    content = data.getStoryText(storyTitle)
-    data.save()
-    return render_template('story.html', storyTitle = storyTitle, content = content)
-
-last_story = None
-
-@app.route('/viewotherstory')
-def viewotherstory():
-    data = azrael.DB_Manager(DB_FILE)
-    storyTitle = request.args['submit']
-    content = data.getStoryText(storyTitle)
-    data.save()
-    last_story = storyTitle
-    return render_template('otherstory.html', storyTitle = storyTitle, content = content)
-
-@app.route('/addauth', methods=["POST"])
-def addauth():
-    data = azrael.DB_Manager(DB_FILE)
-    story_title = last_story
-    content = data.getStoryText(story_title)
-    user_id = data.getID_fromUser(user)
-    newcontent = request.form["txt"]
-    userStories = sorted(data.getStoriesContributedTo(user))
-    data.save()
-    if len(newcontent) > 0:
-        if last_story in not_contr:
-            data.addToStory(last_story, newcontent, user_id)
-            return render_template('user.html', user_name=user, errors=False, stories=userStories)
-        else:
-            flash("you already contributed to this")
-    else:
-        flash("please add content")
-    return (render_template('otherstory.html', storyTitle = story_title, content = content))
-
-
-@app.route('/viewothers')
-def viewothers():
-    data = azrael.DB_Manager(DB_FILE)
-    allStories = data.getStories()
-    userStories = data.getStoriesContributedTo(user)
-    notUserStories = filter(lambda x: x not in userStories, allStories)
-    print(notUserStories)
-    not_contr = notUserStories
-    return (render_template("view.html",stories=notUserStories))
-
 @app.route('/creator')
 def storyCreator():
     return render_template('create.html')
@@ -135,12 +89,59 @@ def storyCreator():
 @app.route('/create', methods=['POST'])
 def create():
     data = azrael.DB_Manager(DB_FILE)
+    allStories = data.getStories()
     story, line = request.form['title'], request.form['line']
+    if story in allStories:
+        flash('Enter a unique story title!')
+        return render_template('create.html', errors = True)
     id = data.getID_fromUser(user)
     data.createStory(story)
     data.addToStory(story, line, id)
     data.save()
     return render_template('story.html', storyTitle = story, content = line)
+
+@app.route('/viewothers')
+def viewothers():
+    data = azrael.DB_Manager(DB_FILE)
+    allStories = data.getStories()
+    userStories = data.getStoriesContributedTo(user)
+    notUserStories = filter(lambda x: x not in userStories, allStories)
+    return render_template("view.html",stories = notUserStories)
+
+
+@app.route('/viewstory', methods=['POST'])
+def viewstory():
+    data = azrael.DB_Manager(DB_FILE)
+    storyTitle = request.form['submit']
+    content = data.getStoryText(storyTitle)
+    data.save()
+    return render_template('story.html', storyTitle = storyTitle, content = content)
+
+
+@app.route('/viewotherstory', methods=["POST"])
+def addForm():
+    data = azrael.DB_Manager(DB_FILE)
+    storyTitle = request.form['submit']
+    setStory(storyTitle)
+    mostRecent = data.findMostRecentUpdate(storyTitle)
+    data.save()
+    return render_template('otherstory.html', storyTitle = storyTitle, content = mostRecent)
+
+@app.route('/addauth', methods=["POST"])
+def addauth():
+    data = azrael.DB_Manager(DB_FILE)
+    user_id = data.getID_fromUser(user)
+    appendContent = request.form["text"]
+    userStories = sorted(data.getStoriesContributedTo(user))
+    data.addToStory(currStory, appendContent, user_id)
+    data.save()
+    flash('Contributed to {0}'.format(currStory))
+    setStory(None)
+    return redirect(url_for('home'))
+
+
+
+
 
 
 

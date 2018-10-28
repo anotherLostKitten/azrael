@@ -7,11 +7,11 @@ import sqlite3   # enable control of an sqlite database
 class DB_Manager:
     '''
     HOW TO USE:
-    Every method opensDB by connecting to the inputted path of 
-    a database file. After performing all operations on the 
+    Every method opensDB by connecting to the inputted path of
+    a database file. After performing all operations on the
     database, the instance of the DB_Manager must save using
     the save method.
-    The operations/methods can be found below. DB_Manager 
+    The operations/methods can be found below. DB_Manager
     has been custom fitted to work with
     P00 -- Da Art of Storytellin'
     '''
@@ -121,9 +121,9 @@ class DB_Manager:
         RETURNS TEXT OF MOST RECENT UPDATE TO storyTitle
         '''
         c = self.openDB()
-        command = "SELECT story_line 'FROM' {0} WHERE story_id == (SELECT max(story_id) FROM '{0}')".format(storyTitle)
+        command = "SELECT story_line FROM '{0}' WHERE story_id == (SELECT max(story_id) FROM '{0}')".format(storyTitle)
         c.execute(command)
-        selectedVal = self.c.fetchone()[0]
+        selectedVal = c.fetchone()[0]
         return selectedVal
 
     def getStoryText(self, storyTitle):
@@ -163,8 +163,8 @@ class DB_Manager:
         c = self.openDB()
         contributions = set()
         for story in self.getStories():
-            id = "'" + str(self.getID_fromUser(userName)) + "'"
-            command = "SELECT user_id FROM '{0}' WHERE user_id = {1};".format(story, id)
+            id = str(self.getID_fromUser(userName))
+            command = "SELECT user_id FROM '{0}' WHERE user_id = '{1}';".format(story, id)
             c.execute(command)
             selectedVal = c.fetchone()
             if selectedVal != None:
