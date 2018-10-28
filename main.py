@@ -90,7 +90,7 @@ def create():
     allStories = data.getStories()
     story, line = request.form['title'], request.form['line']
     if story in allStories:
-        flash('Enter a unique story title!')
+        flash('Story title taken!')
         return render_template('create.html', errors = True)
     if (len(story.strip()) == 0 or len(line.strip())==0):
         flash("Please don't contribute blank spaces!")
