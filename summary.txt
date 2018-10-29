@@ -1,0 +1,15 @@
+azrael -- Johnny Wong, Sarar Aseer, Jason Tung, Zane Wang
+SoftDev1 pd8
+P0 -- Da Art of Storytellin'
+2018-10-28
+
+Summary Document:
+The project works as expected. The user will have to register, and then log in
+with the registered account. Afterwards, they will be able to add to existing
+stories, create new stories, or view stories that they have contributed to. 
+
+Johnny Wong worked on the database and the sqlite commands used to manipulate 
+the database in the python file. Jason Tung tested, wrote python commands to 
+use the templates that Sarar Aseer wrote with Jinja and HTML, and designed the
+webpage using flask. Zane Wang served as project manager, resolving disputes, 
+identifying bugs, testing the website, and uploading important documents.
