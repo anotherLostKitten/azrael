@@ -237,9 +237,13 @@ Tested code with empty user inputs, registering with existing username, using
 symbols in user inputs instead of numbers and letters. Everything works clean!
 <==================================== CLOSE ==================================>
 
-
 <====================================NEW ENTRY================================>
 tungJ -- 2018-10-28 18:27
 no forms can be filled out with whitespace now 
+<==================================== CLOSE ==================================>
+
+<====================================NEW ENTRY================================>
+wangZ -- 2018-10-28 21:52
+Updated design.pdf, reconfigured component map.
 <==================================== CLOSE ==================================>
 
