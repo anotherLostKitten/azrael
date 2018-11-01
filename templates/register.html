@@ -6,7 +6,13 @@
 <br>
 {% endfor %}
 {% block content %}
-  <h3><i> Register for an azrael account </h3></i>
+{% if get_flashed_messages()|length==0 %}
+<img src="static/bazinga.jpg"/>
+{% else %}
+<img src="static/bazinga_angry.jpg"/>
+{% endif %}
+<br/>
+<h3><i> Register for an azrael account </h3></i>
   <form action="/auth" method="POST">
 
     <b>
